@@ -6,6 +6,7 @@ import { useState } from "react";
 //   score  — 0-100 → elige el color automáticamente
 //   color  — hex directo, sobreescribe score
 //   width  — ancho del SVG (default 300)
+/** @param {{ score?: number, color?: string, width?: number, className?: string }} props */
 export function InkMascot({ score, color, width = 300, className = "" }) {
   const fill =
     color !== undefined ? color

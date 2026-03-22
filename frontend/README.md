@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ink — Smart Contract Risk Analyzer
 
-## Getting Started
+> Translate blockchain complexity into human decisions.
 
-First, run the development server:
+Ink analyzes Avalanche C-Chain smart contracts and returns an instant risk score with an AI-generated plain-language explanation — no wallet required, no technical knowledge needed.
+
+**Live app:** https://ink-hinni2omx-jehp23s-projects.vercel.app
+
+---
+
+## What it does
+
+Paste any Avalanche contract address and get:
+
+- **Risk score** (0–100) computed from 11 on-chain signals
+- **Risk level** — Low / Medium / High with color coding
+- **Warnings** in plain language (mint functions, holder concentration, unverified contracts, etc.)
+- **AI explanation** powered by Groq / Llama 3.3-70B in English or Spanish
+
+## Tech stack
+
+- **Next.js 15** (App Router) + **TailwindCSS v4**
+- Calls the [Ink backend](https://github.com/Jehp23/ink-backend) via `POST /analyze`
+- Language toggle EN / ES
+- Configurable via `NEXT_PUBLIC_API_URL` env var
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
 
-## Learn More
+For production, set this to your deployed backend URL.
 
-To learn more about Next.js, take a look at the following resources:
+## Demo contracts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Token | Address | Expected result |
+|-------|---------|-----------------|
+| USDC  | `0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E` | Low Risk (~25) |
+| RUG   | `0xb8EF3a190b68175000B74B4160d325FD5024760e` | High Risk (~65) |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy
 
-## Deploy on Vercel
+```bash
+# Vercel (recommended)
+vercel --prod
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set `NEXT_PUBLIC_API_URL` in Vercel environment variables to your backend URL.

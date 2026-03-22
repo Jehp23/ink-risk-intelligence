@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Ink — Smart Contract Risk Analyzer",
+  "version": "1.0.0",
+  "description": "Detects EVM addresses on any page and shows Avalanche risk scores inline.",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+    "https://ink-backend-mkis.onrender.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Ink Risk Analyzer",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}
