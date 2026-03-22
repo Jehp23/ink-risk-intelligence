@@ -286,11 +286,11 @@ Our differentiator is the translation layer — turning on-chain complexity into
 
 ## Team
 
-| Name | Role |
-|------|------|
-| Luciano | AI + scoring logic |
-| Agustín | API + on-chain data |
-| Mariano | UI + demo + clarity |
+| Name | Role | GitHub |
+|------|------|--------|
+| Luciano | AI + scoring logic | [@jehp23](https://github.com/jehp23) |
+| Agustín | API + on-chain data | [@juarex9](https://github.com/juarex9) |
+| Mariano | UI + demo + clarity | [@Marixs01](https://github.com/Marixs01) |
 
 ---
 
